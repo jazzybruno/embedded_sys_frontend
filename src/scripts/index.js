@@ -1,33 +1,98 @@
-// Get elements by their IDs
-const addAnalyticsButton = document.getElementById('addAnalyticsButton');
-const addAnalyticsModal = document.getElementById('addAnalyticsModal');
-const closeAnalyticsModal = document.getElementById('closeAnalyticsModal');
-const analyticsForm = document.getElementById('analyticsForm');
+// Check for the presence of a token in local storage
+const token = localStorage.getItem("token");
 
-// Show the "Add Analytics" modal when the button is clicked
-addAnalyticsButton.addEventListener('click', () => {
-    addAnalyticsModal.class='fixed inset-0  items-center justify-center flex bg-black bg-opacity-50'
-});
+if (!token) {
+  // If there's no token, redirect to the login page
+  window.location.href = "http://127.0.0.1:5501/frontend/src/templates/login.html";
+} else {
+  // Token is present and valid, render the page
 
-// Close the modal when the close button is clicked
-closeAnalyticsModal.addEventListener('click', () => {
-    addAnalyticsModal.classList.add('hidden');
-});
+  // JavaScript for opening the Analytics Modal
+  document.getElementById("openModal").addEventListener("click", function () {
+    document.getElementById("analyticsModal").classList.remove("hidden");
+  });
 
-// Handle the form submission (you should customize this)
-analyticsForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    // Add logic to handle form data and update the chart and table
-});
+  // JavaScript for closing the Analytics Modal
+  document.getElementById("closeModal").addEventListener("click", function () {
+    document.getElementById("analyticsModal").classList.add("hidden");
+  });
 
-// Chart.js Initialization
-const ctx = document.getElementById('analyticsChart').getContext('2d');
-const chart = new Chart(ctx, {
-    type: 'line', // or other chart type
-    data: {
-        // Chart data configuration
-    },
+  const DATA_COUNT = 7;
+  const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+
+  // Generate an array of month labels
+  const labels = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Blood Pressure',
+        data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * (NUMBER_CFG.max - NUMBER_CFG.min + 1)) + NUMBER_CFG.min),
+        borderColor: 'rgba(255, 0, 0, 0.5)',
+        backgroundColor: 'rgba(255, 0, 0, 0.5)',
+        yAxisID: 'y',
+      },
+      {
+        label: 'Body Temperature',
+        data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * (NUMBER_CFG.max - NUMBER_CFG.min + 1)) + NUMBER_CFG.min),
+        borderColor: 'rgb(37, 150, 190)',
+        backgroundColor: 'rgb(37, 150, 190)',
+        yAxisID: 'y',
+      },
+      {
+        label: 'Heart Rate',
+        data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * (NUMBER_CFG.max - NUMBER_CFG.min + 1)) + NUMBER_CFG.min),
+        borderColor: '#1c8098',
+        backgroundColor: '#1c8098',
+        yAxisID: 'y1',
+      },
+    ],
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
     options: {
-        // Chart options
-    }
-});
+      responsive: true,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      stacked: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart - Multi Axis',
+        },
+      },
+      scales: {
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          grid: {
+            drawOnChartArea: false,
+          },
+        },
+      },
+    },
+  };
+
+  // Create a Chart.js chart on the canvas element
+  const ctx = document.getElementById('analyticsChart').getContext('2d');
+  const myChart = new Chart(ctx, config);
+}
