@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,300;1,400&family=Mooli&family=Poppins:ital,wght@0,100;0,200;0,300;0,700;1,100;1,200;1,700&family=Quicksand:wght@300;400;500;700&display=swap');
+
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.mooli {
+    font-family: 'Mooli', cursive;
+}
+
+.josefin {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.comic {
+    font-family: 'Comic Neue', cursive;
+}
+
+.quicksand {
+    font-family: 'Quicksand', sans-serif;
+}
+
+  .custom-table {
+    width: 100%;
+    margin: 10 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-container {
+    width: 100%;
+    margin: 10 auto;
+    padding-top: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
