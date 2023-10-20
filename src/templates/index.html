@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/utils.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js" integrity="sha512-CWVDkca3f3uAWgDNVzW+W4XJbiC3CH84P2aWZXj+DqI6PNbTzXbl1dIzEHeNJpYSn4B6U8miSZb/hCws7FnUZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/output.css">
@@ -23,7 +24,7 @@
             <div class="flex items-center">
                 <!-- User Profile -->
                 <div class="text-black mr-4">Bruno </div>
-                <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
+                <button id="logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
             </div>
         </div>
     </header>
@@ -69,22 +70,22 @@
                     <div class="flex flex-col space-y-10 justify-center items-start "> 
                     <div class="flex items-center justify-between w-[100%] mt-4 "> 
                         <p class="poppins text-lg text-black w-[50%] flex justify-center items-start ">Username:</p>
-                        <p class="mooli text-md text-gray-600 w-[50%] flex justify-center items-start">Bruno</p>
+                        <p class="mooli text-md text-gray-600 w-[50%] flex justify-center items-start " id="username">Bruno</p>
                     </div>
 
                     <div class="flex items-center justify-between w-[100%]"> 
                         <p class="poppins text-lg text-black w-[50%] flex justify-center items-start">Password:</p>
-                        <p class=" mooli text-md text-gray-600 w-[50%] flex justify-center items-start">********</</p>
+                        <p class=" mooli text-md text-gray-600 w-[50%] flex justify-center items-start " id="password">********</</p>
                     </div>
 
                     <div class=" poppins flex items-center justify-between w-[100%]"> 
                         <p class="text-lg text-black text-left w-[50%] flex justify-center items-start ">Analytics:</p>
-                        <p class=" mooli text-md text-gray-600 w-[50%] flex justify-center items-start">10</p>
+                        <p class=" mooli text-md text-gray-600 w-[50%] flex justify-center items-start" id="analtytics">10</p>
                     </div>
 
                     <div class="poppins flex items-center justify-between w-[100%]"> 
                         <p class="text-lg text-black w-[50%] flex justify-center items-start">Email:</p>
-                        <p class="mooli text-md text-gray-600 w-[50%] flex justify-start items-start">user@example.com</p>
+                        <p class="mooli text-md text-gray-600 w-[50%] flex justify-start items-start" id="email">user@example.com</p>
                     </div>
                     </div>
                 </div>

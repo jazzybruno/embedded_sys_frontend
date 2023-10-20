@@ -5,6 +5,8 @@ if (!token) {
   // If there's no token, redirect to the login page
   window.location.href = "http://127.0.0.1:5501/frontend/src/templates/login.html";
 } else {
+
+   utils = new Utils();
   // Token is present and valid, render the page
 
   // JavaScript for opening the Analytics Modal
@@ -16,6 +18,18 @@ if (!token) {
   document.getElementById("closeModal").addEventListener("click", function () {
     document.getElementById("analyticsModal").classList.add("hidden");
   });
+
+  //  data fetching to see the details of the server 
+  utils.setLoggedInProfile(document);
+
+  // codes for managin the logout button
+  const logoutButton = document.getElementById("logout");
+  logoutButton.addEventListener("click", ()=>{
+    utils.logout();
+  });
+  
+  // codes for managing the activity fetching 
+  utils.getUserAnalytics()
 
   const DATA_COUNT = 7;
   const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
